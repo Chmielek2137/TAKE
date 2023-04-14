@@ -1,12 +1,10 @@
-/*
+*
 
 !.gitignore
 !/L1/
 !L1/ServletsJSPJSTL/
-!L1/ServletsJSPJSTL/*
 !/L2/
 !L2/JSFLab/
-!L2/JSFLab/*
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
