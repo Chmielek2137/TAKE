@@ -48,13 +48,13 @@
           <td th:text="${b.numGuests}"></td>
           <td th:text="${b.apartment.name}"></td>
           <td th:text="${b.apartment.capacity}"></td>
-          <td><form action="#" th:action="@{'/bookings/delete/{id}'(id=${b.id})}" th:method="delete">
-            <button type="submit">Delete</button>
-          </form></td>
-          <!--<td><form action="#" th:action="@{/bookings/delete}" th:method="post">
-            <input type="hidden" name="id" th:value="${b.id}" />
+          <!--<td><form action="#" th:action="@{'/bookings/delete/{id}'(id=${b.id})}" th:method="delete">
             <button type="submit">Delete</button>
           </form></td>-->
+          <td><form action="#" th:action="@{/bookings/delete}" th:method="post">
+            <input type="hidden" name="id" th:value="${b.id}" />
+            <button type="submit">Delete</button>
+          </form></td>
         </tr>
       </tbody>
     </table>

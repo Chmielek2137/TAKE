@@ -60,15 +60,15 @@ public class BookingController {
         return view;
     }
 
-    @DeleteMapping(value="/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        bookingRepository.deleteById(id);
-        return "redirect:/bookings";
-    }
-
-//    @PostMapping(value="/delete")
-//    public String delete(@RequestParam Long id) {
+//    @DeleteMapping(value="/delete/{id}")
+//    public String delete(@PathVariable Long id) {
 //        bookingRepository.deleteById(id);
 //        return "redirect:/bookings";
 //    }
+
+    @PostMapping(value="/delete")
+    public String delete(@RequestParam Long id) {
+        bookingRepository.deleteById(id);
+        return "redirect:/bookings";
+    }
 }
