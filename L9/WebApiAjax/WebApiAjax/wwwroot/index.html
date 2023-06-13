@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#calc").click(function () {
+                var x = $("#x").val();
+                var y = $("#y").val();
+                $.ajax(fetch(`http://localhost:5114/math?x=${x}&y=${y}`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (jsonResponse) {
+                        $("#sum").text(jsonResponse.sum);
+                        $("#difference").text(jsonResponse.difference);
+                        $("#product").text(jsonResponse.product);
+                        $("#quotient").text(jsonResponse.quotient);
+                    }));
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function calcVanil() {
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            fetch(`http://localhost:5114/math?x=${x}&y=${y}`)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (jsonResponse) {
+                    document.getElementById("sum").innerHTML = jsonResponse.sum;
+                    document.getElementById("difference").innerHTML = jsonResponse.difference;
+                    document.getElementById("product").innerHTML = jsonResponse.product;
+                    document.getElementById("quotient").innerHTML = jsonResponse.quotient;
+                });
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("calcVanilia").addEventListener("click", calcVanil);
+        });
+    </script>
+        <div>
+            <h1>Calculations</h1>
+            <form>
+                x = <input type="text" id="x" />
+                y = <input type="text" id="y" />
+                <input type="button" id="calc" value="Call API (jQuery)" />
+                <input type="button" id="calcVanilia" value="Call API (vanilla JS)" />
+            </form>
+            x + y = <span id="sum"></span><br />
+            x - y = <span id="difference"></span><br />
+            x * y = <span id="product"></span><br />
+            x / y = <span id="quotient"></span><br />
+        </div>
+</body >
+</html >
